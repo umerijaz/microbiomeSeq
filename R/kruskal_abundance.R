@@ -23,6 +23,8 @@
 #' data(pitlatrine)
 #' physeq <- pitlatrine
 #' kw_sig <-  kruskal_abundance(physeq, "Country")
+#' #plot the significant features
+#' plot_signif(kw_sig$plotdata) #see function \link[microbiomeSeq]{plot_signif}
 #' @references \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015
 #' @references \url{http://www.bigre.ulb.ac.be/courses/statistics_bioinformatics/practicals/microarrays_berry_2010/berry_feature_selection.html}
 #'

@@ -28,6 +28,8 @@
 #' data(pitlatrine)
 #' physeq<-data(physeq)
 #' deseq_sig  <- differential_abundance(physeq, grouping_column = "Country")
+#' #plot the significant features
+#' plot_signif(deseq_sig$plotdata) #see function \link[microbiomeSeq]{plot_signif}
 #'
 #' @references \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015
 #'
