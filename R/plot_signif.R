@@ -100,7 +100,7 @@ plot_MA <- function(res_tax=NULL){
 }
 
 #== plot of multiple testing corrections ====
-plot_corrections <- function(corrections_table){
+plot_corrections <- function(corrections_table, pvalue.Cutoff){
 
   if(!is.null(corrections_table)){
     plot(corrections_table$p.value, corrections_table$E.value,main='Multitesting corrections',
