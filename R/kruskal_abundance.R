@@ -22,6 +22,7 @@
 #' @examples
 #' data(pitlatrine)
 #' physeq <- pitlatrine
+#' physeq <- taxa_level(physeq,"Phylum")
 #' kw_sig <-  kruskal_abundance(physeq, "Country")
 #' #plot the significant features
 #' plot_signif(kw_sig$plotdata) #see function \link[microbiomeSeq]{plot_signif}

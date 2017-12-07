@@ -26,6 +26,7 @@
 #'        }
 #' @examples
 #' data(pitlatrine)
+#' physeq <- taxa_level(physeq,"Phylum")
 #' physeq<-data(physeq)
 #' deseq_sig  <- differential_abundance(physeq, grouping_column = "Country")
 #' #plot the significant features
