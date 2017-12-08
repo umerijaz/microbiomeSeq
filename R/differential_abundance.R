@@ -26,8 +26,8 @@
 #'        }
 #' @examples
 #' data(pitlatrine)
-#' physeq <- taxa_level(physeq,"Phylum")
 #' physeq<-data(physeq)
+#' physeq <- taxa_level(physeq,"Phylum")
 #' deseq_sig  <- differential_abundance(physeq, grouping_column = "Country")
 #' #plot the significant features
 #' plot_signif(deseq_sig$plotdata) #see function \link[microbiomeSeq]{plot_signif}
@@ -36,13 +36,10 @@
 #'
 #' @author Alfred Ssekagiri \email{assekagiri@gmail.com},  Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk}
 #'
-#' @import phyloseq
-#' @import DESeq2
-#'
 #' @export differential_abundance
 #'
 differential_abundance <- function(physeq, grouping_column,pvalue.threshold=0.05,lfc.threshold=0,
-                          filename = NULL,output_norm=NULL){
+                          filename = "NB_significant",output_norm=NULL){
 
   abund_table <- otu_table(physeq)
   meta_table <-data.frame(sample_data(physeq))
@@ -95,7 +92,7 @@ differential_abundance <- function(physeq, grouping_column,pvalue.threshold=0.05
     row.names(res_table)<- rownames(res_tax_sig)
     data_to_write<-res_tax_sig[,c("baseMean","log2FoldChange","pvalue","padj")]
     data_to_write$Upregulated<-levels(meta_table[,grouping_column])[as.numeric(data_to_write$log2FoldChange>0)+1]
-    write.csv(data_to_write,paste("NB_significant_",paste(levels(meta_table$Groups),collapse="_vs_"),".csv",sep=""))
+    write.csv(data_to_write,paste(filename,paste(levels(meta_table$Groups),collapse="_vs_"),".csv",sep=""))
   }
 
   out_put <- list("SignFeaturesTable"=res_tax,"plotdata"=df,"importance"=df_accuracy)

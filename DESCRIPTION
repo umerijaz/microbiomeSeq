@@ -4,22 +4,21 @@ Version: 0.1
 Authors@R: c(
     person("Alfred", "Ssekagiri", email = "assekagiri@gmail.com", role = "aut"),
     person("Umer", " Zeeshan Ijaz", email = "Umer.Ijaz@glasgow.ac.uk", role = "cre"))
-Description: This package enhances analysis and visualisation of community data in an environmental context. The major points of focus include: alpha diversity which is measured using the pre-existing indices and compared among conditions, ordination and beta dispersion of taxa abundance, differential expression of taxa under different conditions using Kruskal-Wallis test and kernel based approach and the famous DESeq2 implementation, effects of environmental variables to community structure and determining sub communities in taxa at different taxonomic levels using network-wide statistical measures. The package builds on phyloseq class as the back-borne and ggplot2 for visualisation among other packages.
+Description: This package enhances analysis and visualisation of microbial community data in an environmental context. The major points of focus include: alpha diversity which is measured using the pre-existing indices and compared among conditions, ordination and beta dispersion of taxa abundance, differential abundance of taxa under different conditions using Kruskal-Wallis test, kernel based approach and the famous DESeq2 implementation, effects of environmental variables to community structure and determining sub communities in taxa at different taxonomic levels using network-wide statistical measures. The package builds on phyloseq class as the back-borne and ggplot2 for visualisation among other packages.
 Depends: R (>= 3.2.3)
-Imports:
-	ggplot2 (>= 2.2.1),
-	igraph (>= 1.1.2),
-	DESeq2 (>= 1.16.1),
-	KMDA,
-	vegan (>= 2.4),
-	phyloseq (>= 1.14.0),
-	WGCNA (>= 1.60),
-	fso (>= 2.0),
-	randomForest (>= 4.6),
-	data.table (>= 1.10.4),
-	reshape2 (>= 1.4.2),
-	gtable (>= 0.2.0),
-	gridExtra (>= 2.2.1)
+Imports: igraph (>= 1.1.2),
+		 DESeq2 (>= 1.16.1),
+		 KMDA,
+		 vegan (>= 2.4),
+		 phyloseq (>= 1.14.0),
+		 WGCNA (>= 1.60),
+		 fso (>= 2.0),
+		 randomForest (>= 4.6),
+		 data.table (>= 1.10.4),
+		 reshape2 (>= 1.4.2),
+		 gtable (>= 0.2.0),
+		 ggplot2 (>= 2.2.1),
+		 gridExtra (>= 2.2.1)
 Suggests: R.rsp
 VignetteBuilder: R.rsp
 URL: http://www.github.com/umerijaz/microbiomeSeq

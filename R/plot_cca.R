@@ -10,10 +10,6 @@
 #' @param `exclude.variables` a list of variables to be excluded from the cca plot.
 #' @param `num.env.variables` is an integer specifying the number of variables to show on the cca plot.
 #'
-#' @import vegan
-#' @import gridBase
-#' @import ggplot2
-#'
 #' @return A ggplot object
 #'
 #' @examples
@@ -24,7 +20,6 @@
 #' @references \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015
 #'
 #' @author Alfred Ssekagiri \email{assekagiri@gmail.com},  Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk}
-
 #'
 #' @export plot_cca
 

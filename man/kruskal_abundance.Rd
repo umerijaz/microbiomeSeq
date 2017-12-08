@@ -18,16 +18,16 @@ information, this should be one of the components of grouping vector.}
 }
 \value{
 Returns a list of three items: \itemize{
-        \item  SignfeaturesTable: A \code{data.frame} of taxa with coresponding raw p-values, corrected p-values, family wise error rate and expected abundance 
+        \item  SignfeaturesTable: A \code{data.frame} of taxa with coresponding raw p-values, corrected p-values, family wise error rate and expected abundance
         computed by using raw p-values.
         \item  importance: A \code{data.frame} of taxa mean decrease in accuracy as obtained by random forest classifier.
-        \item plotdata: A \code{data.frame} of taxa and corresponding corrected p-values, importance rank organised 
-        in form accepted by ggplot. 
+        \item plotdata: A \code{data.frame} of taxa and corresponding corrected p-values, importance rank organised
+        in form accepted by ggplot.
        }
 }
 \description{
-This function finds the features that are significantly 
-differentially abundant  in the provided taxa abundance data under different conditions 
+This function finds the features that are significantly
+differentially abundant  in the provided taxa abundance data under different conditions
 using Kruskal-Wallis test. The p-values values generated are corrected for multiple testing
 using  family wise error rate. Significance is based on the corrected pvalue threshold. Significant features
 are assigned importance using random forest classifier. The measure of importance used in this case is mean decrese accuracy.
@@ -35,7 +35,11 @@ are assigned importance using random forest classifier. The measure of importanc
 \examples{
 data(pitlatrine)
 physeq <- pitlatrine
+physeq <- taxa_level(physeq,"Phylum")
 kw_sig <-  kruskal_abundance(physeq, "Country")
+#plot the significant features
+plot_signif(kw_sig$plotdata) #see function \\link[microbiomeSeq]{plot_signif}
+
 }
 \references{
 \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015

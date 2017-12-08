@@ -19,9 +19,6 @@
 #'
 #' @author Alfred Ssekagiri \email{assekagiri@gmail.com}, Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk}
 #'
-#' @import ggplot2
-#' @import grid
-#'
 #' @export plot_signif
 #' @export plot_MA
 #' @export plot_corrections
@@ -57,9 +54,10 @@ plot_signif <- function(df=NULL,top.taxa=20,...){
 }
 
 #==generate stand alone plot for random forest results =============#
-plot_MDA <- function(df_accuracy){
+plot_MDA <- function(df_accuracy, top.taxa=20){
   mda_plot <-NULL
   if(!is.null(df_accuracy)){
+    df_accuracy <- df_accuracy[which(df_accuracy$rank%in%c(1:top.taxa)),]
     mda_plot <- ggplot(data = df_accuracy,aes(x=Sample,y=Value)) + theme_bw()
     mda_plot <- mda_plot+geom_bar(stat = "identity",fill="darkblue",width = 0.5)
     mda_plot <- mda_plot + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
@@ -68,11 +66,10 @@ plot_MDA <- function(df_accuracy){
   return(mda_plot)
 }
 
-plot_MA <- function(res_tax=NULL){
+plot_MA <- function(res_tax=NULL, label=F){
   p1 <- NULL
   p2<-NULL
   if(!is.null(res_tax)){
-    label=T
     tax.display = NULL
     tax.aggregate = "OTU"
     p1 <- ggplot(data = res_tax, aes(x = baseMean, y = log2FoldChange, color = Significant)) + geom_point(size = 2) + scale_x_log10()
@@ -91,7 +88,7 @@ plot_MA <- function(res_tax=NULL){
     res_tax$cols<- ifelse(res_tax$log2FoldChange>=0, "Up regulated", "Down regulated")
     p2<-ggplot(data=res_tax,aes(x=rownames(res_tax),y=log2FoldChange,fill=cols))+geom_bar(stat="identity",width=0.5)+theme_bw()
     p2<-p2 + theme(axis.text.x = element_text(angle = 90,hjust = 1))+ xlab("Taxa Description") +ylab("Log2 Fold Change")+
-      geom_text(aes(label=round(as.numeric(baseMean),1)), vjust=0)
+      geom_text(aes(label=round(as.numeric(baseMean),1)), vjust=0, angle=90)
     p2<-p2+scale_fill_manual(values = c("Up regulated" = "darkblue", "Down regulated" = "red"))+theme(legend.title=element_blank())
   }
 

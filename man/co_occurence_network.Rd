@@ -30,10 +30,10 @@ Files of visual representation of the network showing subcommunities (identified
 network statistics and file containing pairwise corrrelations of taxa in under different conditions.
 }
 \description{
-This function uses co-occurence pattern analysis to identify co-occuring features/taxa in community 
+This function uses co-occurence pattern analysis to identify co-occuring features/taxa in community
 data under specified environmental conditions. Co-occurence is measured as positive correlation whose threshold(s)
 can be specified as indicated in arguments section. Amongst these features, pairwise co-occurences which are outstanding within sub communities
-are detected. p-values generated during pairwise correlations are adjusted for multiple comparisons 
+are detected. p-values generated during pairwise correlations are adjusted for multiple comparisons
 by false discovery rate. The network statistics used to assign importance of taxa/features include betweenness, closeness,
 and eigenvector centrality.
 }
@@ -46,7 +46,7 @@ co_occr <- co_occurence_network(physeq, grouping_column = "Country", rhos = 0.35
 \references{
 \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015
 
-[Ryan J. Williams, Adina Howe and Kirsten S. Hofmockel. 
+[Ryan J. Williams, Adina Howe and Kirsten S. Hofmockel.
            Demonstrating microbial co-occurrence pattern analyses within and between ecosystems,
            Frontiers in Microbial Ecology, 5:358, 2014].
 }

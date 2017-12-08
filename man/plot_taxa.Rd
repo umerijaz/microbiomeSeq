@@ -12,11 +12,11 @@ plot_taxa(physeq, grouping_column, method = "hellinger", number.taxa = 21,
 taxonomic assignment, sample data including the measured variables and categorical information
 of the samples, and / or phylogenetic tree if available.}
 
-\item{method.}{A \code{method} to used to calculate dissimilarity coefficents. 
-Available methods are: "hellinger", "chord", "chisquare", "profiles", 
-"percentdiff", "ruzicka", "divergence", "canberra", 
-"whittaker", "wishart", "kulczynski", "jaccard", "sorensen", "ochiai",  
-"ab.jaccard", "ab.sorensen", "ab.ochiai", "ab.simpson", "euclidean". the function uses 
+\item{method.}{A \code{method} to used to calculate dissimilarity coefficents.
+Available methods are: "hellinger", "chord", "chisquare", "profiles",
+"percentdiff", "ruzicka", "divergence", "canberra",
+"whittaker", "wishart", "kulczynski", "jaccard", "sorensen", "ochiai",
+"ab.jaccard", "ab.sorensen", "ab.ochiai", "ab.simpson", "euclidean". the function uses
 "hellinger" as a default.}
 
 \item{grouping_column(Required).}{Name of a categorical variable that is preffered for grouping the.
@@ -26,10 +26,10 @@ information.}
 Returns a ggplot object. This can further be manipulated as preferred by user.
 }
 \description{
-This function finds the most abundant taxa  for each sample. It also calculates local 
+This function finds the most abundant taxa  for each sample. It also calculates local
 contribution to beta  diversity using a selected dissimilarity coefficient.
 It returns a ggplot object which a visual representation of the most abundant
-taxa for each of the samples. The number of top taxa can be suggested as an argument. The visual 
+taxa for each of the samples. The number of top taxa can be suggested as an argument. The visual
 representation is limited to 21 top taxa, more information can be availed by supplying a file name to which
 details of LCBD can be written.
 }

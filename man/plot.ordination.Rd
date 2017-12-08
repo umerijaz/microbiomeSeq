@@ -4,7 +4,7 @@
 \alias{plot.ordination}
 \title{Ordination plots}
 \usage{
-\method{plot}{ordination}(ordination.res, method, pvalue.cutoff = 0.05,
+plot.ordination(ordination.res, method, pvalue.cutoff = 0.05,
   show.pvalues = T, N = 5, extra_marginspace = 0.35)
 }
 \arguments{

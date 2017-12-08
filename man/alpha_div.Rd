@@ -11,7 +11,7 @@ alpha_div(physeq, method)
 taxonomic assignment, sample data including the measured variables and categorical information
 of the samples, and / or phylogenetic tree if available.}
 
-\item{method}{(Required). A list of character strings specifying \code{method} to be used to calculate for alpha diversity 
+\item{method}{(Required). A list of character strings specifying \code{method} to be used to calculate for alpha diversity
 in the data. Available methods are: "richness", "fisher", "simpson", "shannon" and "evenness".}
 }
 \value{

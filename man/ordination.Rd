@@ -17,11 +17,11 @@ information.}
 taxonomic assignment, sample data including the measured variables and categorical information
 of the samples, and / or phylogenetic tree if available.}
 
-\item{method.}{A character string specifying ordination method. All methods available to the \code{ordinate} function 
+\item{method.}{A character string specifying ordination method. All methods available to the \code{ordinate} function
 of \code{phyloseq} are acceptable here as well.}
 
 \item{which_distance.}{A string character specifying dissimilarity index to be used in calculating pairwise distances (Default index is "bray".).
-"unifrac","wunifrac","manhattan", "euclidean", "canberra", "bray", "kulczynski", "jaccard", "gower", "altGower", 
+"unifrac","wunifrac","manhattan", "euclidean", "canberra", "bray", "kulczynski", "jaccard", "gower", "altGower",
 "morisita", "horn", "mountford", "raup" , "binomial", "chao", "cao" or "mahalanobis".}
 }
 \value{
@@ -34,15 +34,15 @@ Returns a list of three items: \itemize{
 }
 \description{
 This function performs ordination using a selected method. It also performs PERMANOVA using a distance matrix corresponding
-to the taxa abundance under the different conditions/groups. It also computes  pairwise beta dispersion for 
-all conditions of a selected grouping variable, beta dispersion is measured as the average distance of group members to the group centroid. 
+to the taxa abundance under the different conditions/groups. It also computes  pairwise beta dispersion for
+all conditions of a selected grouping variable, beta dispersion is measured as the average distance of group members to the group centroid.
 The function a solution of ordination, PERMANOVA results and beta dispersion results. See value for details.
 }
 \examples{
- 
 data(pitlatine)
 physeq <- pitlatrine
 ord.res <- ordination(physeq, method="NMDS", grouping_column="Depth")
+
 
 }
 \references{

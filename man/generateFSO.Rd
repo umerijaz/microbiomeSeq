@@ -32,8 +32,11 @@ It returns  an ordination plot which is annotated with a correlation between the
 the variable and the fuzzy values together with corresponding significance label.
 }
 \examples{
+data(pitlatrine)
+physeq <- taxa_level(pitlatrine, "Phylum")
 p <- generateFSO(physeq, grouping_column="Country", method=1, type=1)
 print(p)
+
 
 }
 \references{

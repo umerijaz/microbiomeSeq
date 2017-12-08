@@ -22,6 +22,7 @@ It extends the \link[phyloseq]{tax_glom}  to include names of corresponding taxa
 at a specified taxonomy level and  updating tree tip labels accordingly.
 }
 \examples{
+
 data(pitlatrine)
 physeq<-data(physeq)
 physeq <- taxa_level(physeq = physeq,which_level = "Family")

@@ -17,14 +17,14 @@ information, this should be one of the components of grouping vector.}
 
 \item{pValueCutoff.}{p-value threshold for significance of anova results, default set to 0.05.}
 
-\item{select.variables.}{A vector of character strings(s) specifying environmental variable(s) to be analysed. If 
+\item{select.variables.}{A vector of character strings(s) specifying environmental variable(s) to be analysed. If
 not supplied, all numeric variables are analysed.}
 }
 \value{
 Returns a ggplot object. This can further be manipulated as preferred by user.
 }
 \description{
-This functions applies analysis of variance on the measured environmental variables 
+This functions applies analysis of variance on the measured environmental variables
 in specified groups and constructs a plot showing how the environmental variables vary in the groups.
 The plot is annotated with significance level as obtained from \code{anova}.
 }

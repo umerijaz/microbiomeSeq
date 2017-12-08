@@ -1,6 +1,6 @@
 #'ANOVA of environmental variables
 #'
-#'This functions applies analysis of variance on the measured environmental variables 
+#'This functions applies analysis of variance on the measured environmental variables
 #'in specified groups and constructs a plot showing how the environmental variables vary in the groups.
 #'The plot is annotated with significance level as obtained from \code{anova}.
 #'
@@ -10,28 +10,23 @@
 #' @param grouping_column (Required). Name of a categorical variable that is preffered for grouping the.
 #'        information, this should be one of the components of grouping vector.
 #' @param pValueCutoff. p-value threshold for significance of anova results, default set to 0.05.
-#' @param select.variables. A vector of character strings(s) specifying environmental variable(s) to be analysed. If 
+#' @param select.variables. A vector of character strings(s) specifying environmental variable(s) to be analysed. If
 #' not supplied, all numeric variables are analysed.
 #' @return Returns a ggplot object. This can further be manipulated as preferred by user.
-#' @examples 
+#' @examples
 #' data(pitlatrine)
 #' physeq<-data(pitlatrine)
 #' p1<-plot_anova_env(physeq,grouping_column =  "Country",select.variables=c("Temp","pH"))
 #' print(p1)
-#' 
+#'
 #' @references \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015
-#' 
-#' @author Alfred Ssekagiri \email{assekagiri@gmail.com}, Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk} 
-#' 
-#' @import phyloseq
-#' @import ggplot2
-#' @import grid
-#' @import reshape2
+#'
+#' @author Alfred Ssekagiri \email{assekagiri@gmail.com}, Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk}
 #'
 #' @export plot_anova_env
-#' 
+#'
 plot_anova_env <- function(physeq, grouping_column, pValueCutoff=0.05,select.variables=NULL){
-  
+
   #get meta data from phyloseq object
   meta_table <- as.data.frame(sample_data(physeq))
   #pick numerical variables of environmental data
@@ -40,12 +35,12 @@ plot_anova_env <- function(physeq, grouping_column, pValueCutoff=0.05,select.var
   names(df)<-c("sample","measure","value")
   #Incorporate categorical data in df
   df<-data.frame(df,(meta_table[, grouping_column])[as.character(df$sample),])
-  
-  #do anova of environmental variables between groups 
+
+  #do anova of environmental variables between groups
   anova_res <- perform_anova(df,meta_table,grouping_column,pValueCutoff)
   df_pw <- anova_res$df_pw #get pairwise p-values
   df <- anova_res$df #get updated environmental measure information
-  
+
   #pick selected variables
   if(!is.null(select.variables)){
     df <- df[which(df$measure%in%select.variables),]

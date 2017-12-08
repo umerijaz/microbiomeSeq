@@ -2,7 +2,7 @@
 #'
 #'This function performs differential analysis using a distance-based kernel score test.
 #'It obtains set(s) of differentially abundant features between a specified pair of conditions/groups.
-#'The sets are obtained by grouping based on correlation of abundance among features. The strength of the relationship that must exist for 
+#'The sets are obtained by grouping based on correlation of abundance among features. The strength of the relationship that must exist for
 #'features/variables to belong to the same set can be specified. A similar approach applies to environmental
 #'variables which can also be grouped into sets depending on a desired level of correlation amongst member variables.
 #'
@@ -16,54 +16,51 @@
 #'        two options are available for this; "dscore" and "sscore". See \link[KMDA]{dscore} and  \link[KMDA]{sscore} for details.
 #' @param  adjusted.p.value.threshold Cut off p-value for significance of differentially abundant/correlated taxa/environmental variables, default is 0.05.
 #' @param p.adjust.method (optional). method to adjust raw pvalues obtained by the distance based score tests.
-#' @param  corr (optional). Threshold correlation on which grouping of features/ variables is based. 
-#'         
+#' @param  corr (optional). Threshold correlation on which grouping of features/ variables is based.
+#'
 #' @return Returns a list of two items: \itemize{
 #'         \item  kscore_table: A \code{data.frame} of taxa/ environmental variable with kernel based score stats, raw and adjusted pvalues.
 #'         \item plotdata: A \code{data.frame} similar to kcore_table but organised in a way compatible to ggplot.
 #'        }
-#' @examples 
+#'
+#' @examples
 #' data(pitlatrine)
 #' physeq<-data(pitlatrine)
+#' physeq<- taxa_level(physeq, "Phylum")
 #' kda_sig  <- KDA(physeq,grouping_column = "Country")
 #' plot_kda(kda_sig$plotdata)
-#' 
+#'
 #' @references \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015
-#' 
+#'
 #' @author Alfred Ssekagiri \email{assekagiri@gmail.com},  Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk}
-#' 
-#' @import phyloseq
-#' @import ggplot2
-#' @import reshape2
-#' @import KMDA
 #'
 #' @export KDA
-#' 
+#'
 KDA <- function(physeq, grouping_column, analyse="abundance", method="dscore",
                 p.adjust.method="BH",corr=0.99,adjusted.p.value.threshold= 0.05, select.variables=NULL, ...){
-  
+
   meta_table <- data.frame(sample_data(physeq))
-  
-  # choose whether to analyse taxa differential abundance or differential variation 
-  # among measured environmental variables 
+
+  # choose whether to analyse taxa differential abundance or differential variation
+  # among measured environmental variables
   analyse <- match.arg(analyse,c("abundance","meta"))
-  
+
   if(analyse=="abundance"){
     #enforce orientation of Otu_table , this is beacause dscore/sscore requiresamples to be rows.
     if(!taxa_are_rows(physeq)){
-      
+
       abund_table <- t(abund_table)
     }
     analyse.data <- data.frame(abund_table)
   }
   else if(analyse=="meta"){
-    
+
     analyse.data <- (get.num.variables(physeq))$num.variables
-    
+
     if(!is.null(select.variables)){
       analyse.data <- analyse.data[,colnames(analyse.data)%in%select.variables]
     }
-    
+
     analyse.data <- t(analyse.data) #transpose such that samples are rows
   }
   # pick out grouping variable
@@ -76,7 +73,7 @@ KDA <- function(physeq, grouping_column, analyse="abundance", method="dscore",
   Sets<- KMDA::pearson.group(as.matrix(analyse.data),corr)
   Sets_mapping<-data.frame(row.names=rownames(analyse.data),Set=Sets)
   #obtain distance based kernel scores of each otu set
-  #specify the lower and upper bounds of kernel parameter and number of gridpoints 
+  #specify the lower and upper bounds of kernel parameter and number of gridpoints
   #selected in the interval
   KMtable<-NULL
   for(i in unique(Sets)){
@@ -95,10 +92,10 @@ KDA <- function(physeq, grouping_column, analyse="abundance", method="dscore",
     p.adjust.method <- "BH"
   }
   KMtable$kscore.adjusted<-p.adjust(KMtable$kscore,method=p.adjust.method,n=dim(KMtable)[1])
-  
+
   #Select the sets of otus/env_variables that are differentially expressed
   kscore_selected<-rownames(KMtable)[KMtable$kscore.adjusted<=adjusted.p.value.threshold]
-  #organise the data in a format accepted by ggplot2 
+  #organise the data in a format accepted by ggplot2
   df<-NULL
   for(i in kscore_selected){
     tmp<- reshape2::melt(as.matrix(analyse.data[Sets==i,,drop=F]))
@@ -111,7 +108,7 @@ KDA <- function(physeq, grouping_column, analyse="abundance", method="dscore",
   }
   #change the grouping values back to original representation
   df$Groups<-sapply(df$Groups, function(x) ifelse(x == 1, group_levels[1], group_levels[2]))
-  
+
   out <- list("plotdata"=df, "kscore_table"=KMtable)
   return(out)
 }

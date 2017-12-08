@@ -36,13 +36,14 @@ Returns a list of two items: \itemize{
 \description{
 This function performs differential analysis using a distance-based kernel score test.
 It obtains set(s) of differentially abundant features between a specified pair of conditions/groups.
-The sets are obtained by grouping based on correlation of abundance among features. The strength of the relationship that must exist for 
+The sets are obtained by grouping based on correlation of abundance among features. The strength of the relationship that must exist for
 features/variables to belong to the same set can be specified. A similar approach applies to environmental
 variables which can also be grouped into sets depending on a desired level of correlation amongst member variables.
 }
 \examples{
 data(pitlatrine)
 physeq<-data(pitlatrine)
+physeq<- taxa_level(physeq, "Phylum")
 kda_sig  <- KDA(physeq,grouping_column = "Country")
 plot_kda(kda_sig$plotdata)
 

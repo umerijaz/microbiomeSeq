@@ -23,11 +23,11 @@
 #' @author  Alfred Ssekagiri \email{assekagiri@gmail.com}, Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk}
 #'
 #' @examples
+#' data(pitlatrine)
+#' physeq <- taxa_level(pitlatrine, "Phylum")
 #' p <- generateFSO(physeq, grouping_column="Country", method=1, type=1)
 #' print(p)
 #'
-#' @import fso
-#' @import phyloseq
 #'
 #' @export generateFSO
 #'

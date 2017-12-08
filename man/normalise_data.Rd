@@ -11,7 +11,7 @@ normalise_data(physeq, norm.method, ...)
 taxonomic assignment, sample data including the measured variables and categorical information
 of the samples, and / or phylogenetic tree if available.}
 
-\item{method}{(Required). A \code{method} to used to normalise the data. Available methods include: 
+\item{method}{(Required). A \code{method} to used to normalise the data. Available methods include:
 "edgeRnorm", "varstab", "randomsubsample", "proportion" .}
 }
 \value{

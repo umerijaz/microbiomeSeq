@@ -5,7 +5,7 @@
 \title{Differential abundance analysis}
 \usage{
 differential_abundance(physeq, grouping_column, pvalue.threshold = 0.05,
-  lfc.threshold = 0, filename = NULL, output_norm = NULL)
+  lfc.threshold = 0, filename = "NB_significant", output_norm = NULL)
 }
 \arguments{
 \item{physeq}{(Required). A link[phyloseq]{phyloseq} object containing merged information of abundance,
@@ -27,24 +27,27 @@ and not for differential expression analysis.}
 Returns a ggplot object. This can further be manipulated as preferred by user.
 
 Returns a list of three items: \itemize{
-        \item  SignfeaturesTable: A \code{data.frame} of taxa with raw and adjusted pvalues, basemean, log2 fold change and significance labels. 
+        \item  SignfeaturesTable: A \code{data.frame} of taxa with raw and adjusted pvalues, basemean, log2 fold change and significance labels.
         computed by using raw p-values.
         \item  importance: A \code{data.frame} of taxa mean decrease in accuracy as obtained by random forest classifier.
-        \item plotdata: A \code{data.frame} of taxa and corresponding corrected p-values, importance rank organised 
-        in form accepted by ggplot. 
+        \item plotdata: A \code{data.frame} of taxa and corresponding corrected p-values, importance rank organised
+        in form accepted by ggplot.
        }
 }
 \description{
-This function finds the features that are significantly differentially abundant in the provided data, 
-using DESeq implementation which models taxa abundance as a negative binomial distribution. See \link[DESeq2]{DESeq}  for more details. The significance 
-of differentially abundant taxa is defined by log2 fold change and pvalue thresholds. These features are 
+This function finds the features that are significantly differentially abundant in the provided data,
+using DESeq implementation which models taxa abundance as a negative binomial distribution. See \link[DESeq2]{DESeq}  for more details. The significance
+of differentially abundant taxa is defined by log2 fold change and pvalue thresholds. These features are
 then assigned importance using random forest classifer. The measure of importance used in this implementation
 is mean decrease in accuracy.
 }
 \examples{
 data(pitlatrine)
 physeq<-data(physeq)
+physeq <- taxa_level(physeq,"Phylum")
 deseq_sig  <- differential_abundance(physeq, grouping_column = "Country")
+#plot the significant features
+plot_signif(deseq_sig$plotdata) #see function \\link[microbiomeSeq]{plot_signif}
 
 }
 \references{

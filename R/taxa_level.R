@@ -10,9 +10,6 @@
 #' @param which_level (Required). Character string specifying taxonomic level.
 #' @return physeq object at specified taxonomic level.
 #'
-#' @import phyloseq
-#' @import phangorn
-#'
 #' @examples
 #'
 #' data(pitlatrine)

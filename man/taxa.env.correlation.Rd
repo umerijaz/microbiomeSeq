@@ -38,15 +38,16 @@ if not given, all numerical variables are considered.}
 A \code{data.frame} of correlation results.
 }
 \description{
-This function finds the relationship between most abundant taxa 
-and numerical environmental variables based on correlation. The abundance of each feature/taxa is 
-correlated with each of the environmental variables. A correlation test is performed and associated 
+This function finds the relationship between most abundant taxa
+and numerical environmental variables based on correlation. The abundance of each feature/taxa is
+correlated with each of the environmental variables. A correlation test is performed and associated
 p-values are adjusted for multiple testing. The scheme of adjustment is elaborated in the arguments section. The function returns a data.frame with raw p-values, corrected p-values,
 and correlation results.
 }
 \examples{
 data(pitlatrine)
 physeq <- pitlatrine
+physeq <- taxa_level(physeq, "Phylum")
 tax_env_cor <- taxa.env.correlation(physeq,"Country")
 plot_taxa_env(tax_env_cor)
 

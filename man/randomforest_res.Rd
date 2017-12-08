@@ -16,9 +16,9 @@ Returns a \code{data.frame} of importance measure (mean decrease in accuracy) an
 }
 \description{
 This function uses Breiman's random forest algorithm that can be used in unsupervised mode for assessing proximities among data points.
-Random forest classifier is used to determine the importance of differentially expressed features/taxa to the microbial community. 
-The measure used in this case is Mean Descrease in Accuracy aso know as permutation importance which is 
-reported for each of the features. This is obtained by removing the relationship of a feature  and measuring increase in error. 
+Random forest classifier is used to determine the importance of differentially expressed features/taxa to the microbial community.
+The measure used in this case is Mean Descrease in Accuracy aso know as permutation importance which is
+reported for each of the features. This is obtained by removing the relationship of a feature  and measuring increase in error.
 Consequently, the feature with high mean decrease in accuracy is considered most important.
 }
 \references{
