@@ -15,7 +15,7 @@
 #' @return Returns a ggplot object. This can further be manipulated as preferred by user.
 #' @examples
 #' data(pitlatrine)
-#' physeq<-data(pitlatrine)
+#' physeq<-pitlatrine
 #' p1<-plot_anova_env(physeq,grouping_column =  "Country",select.variables=c("Temp","pH"))
 #' print(p1)
 #'
