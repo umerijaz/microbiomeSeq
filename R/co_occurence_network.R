@@ -22,7 +22,7 @@
 #' network statistics and file containing pairwise corrrelations of taxa in under different conditions.
 #' @examples
 #' data(pitlatrine)
-#' physeq <- pitlatrine
+#' physeq <- taxa_level(pitlatrine, "Phylum")
 #' co_occr <- co_occurence_network(physeq, grouping_column = "Country", rhos = 0.35, select.condition = "V", scale.vertex.size=3, scale.edge.width=15)
 #'
 #' @references \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015

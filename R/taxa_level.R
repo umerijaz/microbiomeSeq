@@ -19,6 +19,10 @@
 #'@export taxa_level
 #'
 taxa_level <- function(physeq,which_level){
+    #enforce orientation
+    if(taxa_are_rows(physeq)){
+      physeq <- t(physeq)
+    }
     OTU <- otu_table(physeq)
     SAM <- sample_data(physeq)
     OTU_taxonomy <- tax_table(physeq)
@@ -27,10 +31,11 @@ taxa_level <- function(physeq,which_level){
       OTU_tree <- phy_tree(physeq)
       new_abund_table<-OTU
     } else {
-      list<-unique(OTU_taxonomy[,which_level])
+      list<-na.omit(unique(OTU_taxonomy[,which_level]))
       new_abund_table<-NULL
       for(i in list){
-        tmp<-data.frame(rowSums(OTU[,rownames(OTU_taxonomy)[OTU_taxonomy[,which_level]==i]]))
+        rt <- na.omit(rownames(OTU_taxonomy)[OTU_taxonomy[,which_level]==i])
+        tmp<-data.frame(rowSums(OTU[,rt]))
         if(i==""){colnames(tmp)<-c("__Unknowns__")} else {colnames(tmp)<-paste("",i,sep="")}
         if(is.null(new_abund_table)){new_abund_table<-tmp} else {new_abund_table<-cbind(tmp,new_abund_table)}
       }
@@ -40,7 +45,7 @@ taxa_level <- function(physeq,which_level){
     OTU = otu_table(as.matrix(OTU), taxa_are_rows = FALSE)
     TAX = tax_table(as.matrix(OTU_taxonomy))
     SAM = sample_data(SAM)
-
+    #reconstruct the phyloseq object
     physeq<-NULL
     if(which_level=="Otus"){
       physeq<-merge_phyloseq(phyloseq(OTU, TAX),SAM,midpoint(OTU_tree))
