@@ -12,6 +12,10 @@
 #' @references \url{http://userweb.eng.gla.ac.uk/umer.ijaz/}, Umer Ijaz, 2015
 #' 
 #' @author Alfred Ssekagiri \email{assekagiri@gmail.com},Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk}
+#' 
+#' @import vegan
+#' @import phyloseq
+#' @import data.table
 #'
 #'@export perform_anova
 #'

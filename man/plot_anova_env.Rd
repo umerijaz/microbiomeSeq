@@ -30,7 +30,7 @@ The plot is annotated with significance level as obtained from \code{anova}.
 }
 \examples{
 data(pitlatrine)
-physeq<-data(pitlatrine)
+physeq<-pitlatrine
 p1<-plot_anova_env(physeq,grouping_column =  "Country",select.variables=c("Temp","pH"))
 print(p1)
 
