@@ -2,7 +2,8 @@
 An R package for microbial community analysis in an environmental context
 
 This package is developed to enhance the available statistical analysis procedures in R by providing more 
-analysis produre and visualisation of results for microbial communities data obtained from 16S rRNA.
+analysis produre and visualisation of results for microbial communities data obtained from 16S rRNA. See full details of the usage and dependencies at
+[microbiomeSeq](http://userweb.eng.gla.ac.uk/umer.ijaz/projects/microbiomeSeq_Tutorial.html) tutorial.
 
 #### **Main Features**
 
@@ -10,9 +11,6 @@ analysis produre and visualisation of results for microbial communities data obt
 * [Differential abundance analysis](https://github.com/umerijaz/microbiomeSeq/wiki/Differential-Abundance).
 * [Effects of environmental variables on community structure](https://github.com/umerijaz/microbiomeSeq/wiki/Community-Environment-relationship).
 * [Co-occurence pattern analysis in community data](https://github.com/umerijaz/microbiomeSeq/wiki/Co-ocurrence-Pattern-Analysis).
-
-See full details of the usage and dependencies at 
-[microbiomeSeq](http://userweb.eng.gla.ac.uk/umer.ijaz/projects/microbiomeSeq_Tutorial.html) tutorial.
 
 ![alt text](https://github.com/umerijaz/microbiomeSeq/blob/master/disclaimer.png)
 
