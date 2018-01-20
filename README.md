@@ -6,10 +6,10 @@ analysis produre and visualisation of results for microbial communities data obt
 
 #### **Main Features**
 
-* Alpha and Beta diversity
-* Differential abundance analysis.
-* Effects of environmental variables on community structure.
-* Co-occurence pattern analysis in community data.
+* [Alpha and Beta diversity](https://github.com/umerijaz/microbiomeSeq/wiki/Alpha-and-Beta-Diversity)
+* [Differential abundance analysis](https://github.com/umerijaz/microbiomeSeq/wiki/Differential-Abundance).
+* [Effects of environmental variables on community structure](https://github.com/umerijaz/microbiomeSeq/wiki/Community-Environment-relationship).
+* [Co-occurence pattern analysis in community data](https://github.com/umerijaz/microbiomeSeq/wiki/Co-ocurrence-Pattern-Analysis).
 
 See full details of the usage and dependencies at 
 [microbiomeSeq](http://userweb.eng.gla.ac.uk/umer.ijaz/projects/microbiomeSeq_Tutorial.html) tutorial.
