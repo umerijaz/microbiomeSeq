@@ -35,8 +35,6 @@ plot_taxa <- function(physeq,grouping_column,method="hellinger",number.taxa=21,f
   #==extract components of the phyloseq object
   abund_table <- otu_table(physeq)
   meta_table <- data.frame(sample_data(physeq))
-  OTU_taxonomy <- data.frame(tax_table(physeq))
-
   #Enforce orientation of the phyloseq object
   if(taxa_are_rows(physeq) ){
     abund_table <- t(abund_table)
