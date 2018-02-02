@@ -26,8 +26,7 @@
 #'        }
 #' @examples
 #' data(pitlatrine)
-#' physeq<-data(physeq)
-#' physeq <- taxa_level(physeq,"Phylum")
+#' physeq <- taxa_level(pitlatrine,"Phylum")
 #' deseq_sig  <- differential_abundance(physeq, grouping_column = "Country")
 #' #plot the significant features
 #' plot_signif(deseq_sig$plotdata) #see function \link[microbiomeSeq]{plot_signif}
@@ -80,7 +79,7 @@ differential_abundance <- function(physeq, grouping_column,pvalue.threshold=0.05
   df <- NULL
   for(i in df_accuracy$Sample){
     rank <- (subset(df_accuracy, df_accuracy$Sample==i))$rank
-    tmp<-data.frame(subset.data[,i],meta_table$Groups, rep(rank), rep(paste(i," padj = ",res_tax[i,"padj"],sep="")),dim(data)[1]))
+    tmp<-data.frame(subset.data[,i],meta_table$Groups, rep(rank), rep(paste(i," padj = ", sprintf("%.10g",res_tax[i,"padj"]),sep=""), dim(data)[1]))
     colnames(tmp)<-c("Value","Groups","Rank","Taxa")
     if(is.null(df)){df<-tmp} else { df<-rbind(df,tmp)}
     df <- na.omit(df)

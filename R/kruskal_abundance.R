@@ -68,7 +68,7 @@ kruskal_abundance <- function(physeq, grouping_column,pvalue.threshold=0.05)
   df <- NULL
   for(i in df_accuracy$Sample){
     rank <- (subset(df_accuracy, df_accuracy$Sample==i))$rank
-    tmp<-data.frame(subset.data[,i],meta_table$Groups, rep(rank), rep(paste(i," p.adj = ",sprintf("%.5g",kruskal.wallis.table[kruskal.wallis.table$id==i,"q.value"]),sep=""),dim(data)[1]))
+    tmp<-data.frame(subset.data[,i],meta_table$Groups, rep(rank), rep(paste(i," p.adj = ",sprintf("%.10g",kruskal.wallis.table[kruskal.wallis.table$id==i,"q.value"]),sep=""),dim(data)[1]))
     colnames(tmp)<-c("Value","Groups","Rank","Taxa")
     if(is.null(df)){df<-tmp} else { df<-rbind(df,tmp)}
     df <- na.omit(df)
