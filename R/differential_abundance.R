@@ -71,6 +71,7 @@ differential_abundance <- function(physeq, grouping_column,pvalue.threshold=0.05
 
   #==get importance measure of significant features using random forest
   subset.data<-data.frame(data[,as.character(res_tax[rownames(res_tax_sig),"OTU"])])
+  rownames(res_tax_sig) <- colnames(subset.data) #enforce rownames of res_tax_sig to be the same as colnames of subset data for easy indexing during plotting.
 
   rf_res <- randomforest_res(subset.data, meta_table$Groups)
   df_accuracy <- rf_res$importance
@@ -79,7 +80,7 @@ differential_abundance <- function(physeq, grouping_column,pvalue.threshold=0.05
   df <- NULL
   for(i in df_accuracy$Sample){
     rank <- (subset(df_accuracy, df_accuracy$Sample==i))$rank
-    tmp<-data.frame(subset.data[,i],meta_table$Groups, rep(rank), rep(paste(i," padj = ", res_tax[i,"padj"], sep=""), dim(data)[1]))
+    tmp<-data.frame(subset.data[,i],meta_table$Groups, rep(rank), rep(paste(i," padj = ", sprintf("%.5g",res_tax_sig[i,"padj"]), sep=""), dim(data)[1]))
     colnames(tmp)<-c("Value","Groups","Rank","Taxa")
     if(is.null(df)){df<-tmp} else { df<-rbind(df,tmp)}
     df <- na.omit(df)
@@ -87,8 +88,6 @@ differential_abundance <- function(physeq, grouping_column,pvalue.threshold=0.05
 
   data_to_write=NULL
   if(!is.null(filename)){
-    res_table <- data.frame(res_tax_sig$baseMean , res_tax_sig$log2FoldChange,res_tax_sig$padj)
-    row.names(res_table)<- rownames(res_tax_sig)
     data_to_write<-res_tax_sig[,c("baseMean","log2FoldChange","pvalue","padj")]
     data_to_write$Upregulated<-levels(meta_table[,grouping_column])[as.numeric(data_to_write$log2FoldChange>0)+1]
     write.csv(data_to_write,paste(filename,paste(levels(meta_table$Groups),collapse="_vs_"),".csv",sep=""))
