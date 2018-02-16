@@ -61,6 +61,7 @@ kruskal_abundance <- function(physeq, grouping_column,pvalue.threshold=0.05)
 
   #==random forest classifier ==#
   subset.data<-data.frame(data[,as.character(kruskal.wallis.table[rownames(kruskal.wallis.table),"id"])])
+  kruskal.wallis.table$id <- colnames(subset.data) #enforce that ids and colnames of subset data remain the same for easy indexing later on
   subset.data <- subset.data[,sig_res]
   rf_res <- randomforest_res(subset.data, meta_table$Groups)
   df_accuracy <- rf_res$importance

@@ -43,8 +43,7 @@ is mean decrease in accuracy.
 }
 \examples{
 data(pitlatrine)
-physeq<-data(physeq)
-physeq <- taxa_level(physeq,"Phylum")
+physeq <- taxa_level(pitlatrine,"Phylum")
 deseq_sig  <- differential_abundance(physeq, grouping_column = "Country")
 #plot the significant features
 plot_signif(deseq_sig$plotdata) #see function \\link[microbiomeSeq]{plot_signif}
