@@ -44,7 +44,7 @@ taxa.env.correlation <- function(physeq, grouping_column, method="pearson", pval
 
   method<- match.arg(method,c("pearson", "kendall", "spearman"),several.ok = F)
 
-  abund_table <- otu_table(physeq)
+  abund_table <- t(otu_table(physeq))
   meta_table <- data.frame(sample_data(physeq))
   #get grouping information
   groups<-meta_table[,grouping_column]
