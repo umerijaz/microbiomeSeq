@@ -6,7 +6,7 @@
 #'taxa for each of the samples. The number of top taxa can be suggested as an argument. The visual
 #'representation is limited to 21 top taxa, more information can be availed by supplying a file name to which
 #'details of LCBD can be written.
-#'
+#' @importFrom adespatial beta.div
 #' @param physeq (Required). A \code{phyloseq} object containing merged information of abundance,
 #'        taxonomic assignment, sample data including the measured variables and categorical information
 #'        of the samples, and / or phylogenetic tree if available.
