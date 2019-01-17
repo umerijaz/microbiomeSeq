@@ -24,7 +24,8 @@
 #' @author  Alfred Ssekagiri \email{assekagiri@gmail.com}, Umer Zeeshan Ijaz \email{Umer.Ijaz@glasgow.ac.uk}
 #'
 #' @export plot.ordination
-#'
+#' @export plot_ordisurf
+
 plot.ordination <- function(ordination.res, method, pvalue.cutoff=0.05, show.pvalues=T, N=5,
                             extra_marginspace=0.35){
   sol <- ordination.res$solution
