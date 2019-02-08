@@ -3,7 +3,7 @@
 #'This function calculates alpha diversity of provided community data using
 #'selected indices/method(s). It performs pair-wise ANOVA of diversity measures between groups
 #'and outputs a plot for each of the selected methods(indices) annotated with significance levels.
-#'
+#' @importFrom phyloseq t
 #' @param physeq (Required). A \code{phyloseq} object containing merged information of abundance,
 #'        taxonomic assignment, sample data including the measured variables and categorical information
 #'        of the samples, and / or phylogenetic tree if available.
