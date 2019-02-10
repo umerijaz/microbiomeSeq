@@ -5,8 +5,8 @@
 \title{kernel-based differential analysis}
 \usage{
 KDA(physeq, grouping_column, analyse = "abundance", method = "dscore",
-  p.adjust.method = "BH", corr = 0.99, adjusted.p.value.threshold = 0.05,
-  select.variables = NULL, ...)
+  p.adjust.method = "BH", corr = 0.99,
+  adjusted.p.value.threshold = 0.05, select.variables = NULL, ...)
 }
 \arguments{
 \item{physeq}{(Required). A \link[phyloseq]{phyloseq} object containing merged information of abundance,

@@ -4,7 +4,8 @@
 \alias{plot_anova_diversity}
 \title{Alpha diversity with ANOVA}
 \usage{
-plot_anova_diversity(physeq, method, grouping_column, pValueCutoff = 0.05)
+plot_anova_diversity(physeq, method, grouping_column,
+  pValueCutoff = 0.05, outfile = "anova_diversity.csv")
 }
 \arguments{
 \item{physeq}{(Required). A \code{phyloseq} object containing merged information of abundance,

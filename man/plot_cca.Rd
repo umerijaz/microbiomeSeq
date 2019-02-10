@@ -4,8 +4,8 @@
 \alias{plot_cca}
 \title{Canonical Correspondence Analysis plot}
 \usage{
-plot_cca(physeq, grouping_column, pvalueCutoff = 0.01, norm_method = NULL,
-  env.variables = NULL, num.env.variables = NULL,
+plot_cca(physeq, grouping_column, pvalueCutoff = 0.01,
+  norm_method = NULL, env.variables = NULL, num.env.variables = NULL,
   exclude.variables = NULL, draw_species = F)
 }
 \arguments{

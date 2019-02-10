@@ -4,8 +4,8 @@
 \alias{plot_taxa}
 \title{Local Contribution to Beta Diversity (LCBD)}
 \usage{
-plot_taxa(physeq, grouping_column, method = "hellinger", number.taxa = 21,
-  filename = NULL)
+plot_taxa(physeq, grouping_column, method = "hellinger",
+  number.taxa = 21, filename = NULL)
 }
 \arguments{
 \item{physeq}{(Required). A \code{phyloseq} object containing merged information of abundance,
