@@ -24,7 +24,7 @@ library(microbiomeSeq)
 ```
 
 ##### **Data format/requirement**
-The data is required to be a phyloseq object (of `phloseq-class`) comprising taxa abundance information, taxonomy assignment, 
+The data is required to be a phyloseq object (of `phyloseq-class`) comprising taxa abundance information, taxonomy assignment, 
 sample data which is a combination of measured environmental variables together with any categorical variables present in 
 the samples. If the phylogenetic tree is available, it can also be part but not so relevant for most of the functionality 
 implemented here so far.
