@@ -1,4 +1,4 @@
-,#'Ordination plots
+#'Ordination plots
 #'
 #'This function produces visualisation of ordination and beta dispersion results.
 #'
