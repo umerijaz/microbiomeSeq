@@ -38,13 +38,17 @@
 #'
 #' @export taxa.env.correlation
 #' @export plot_taxa_env
-#'
+
 taxa.env.correlation <- function(physeq, grouping_column, method="pearson", pvalue.threshold=0.05,
                                  padjust.method="BH", adjustment=1, num.taxa=50, select.variables=NULL){
 
   method<- match.arg(method,c("pearson", "kendall", "spearman"),several.ok = F)
-
-  abund_table <- t(otu_table(physeq))
+  #enforce orientation
+  if(taxa_are_rows(physeq)){
+    physeq <- t(physeq)
+  }
+  abund_table <- as.data.frame(t(otu_table(physeq)))
+  #abund_table <- t(otu_table(physeq))
   meta_table <- data.frame(sample_data(physeq))
   #get grouping information
   groups<-meta_table[,grouping_column]
