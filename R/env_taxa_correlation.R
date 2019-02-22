@@ -47,7 +47,7 @@ taxa.env.correlation <- function(physeq, grouping_column, method="pearson", pval
   if(taxa_are_rows(physeq)){
     physeq <- t(physeq)
   }
-  abund_table <- as.data.frame(t(otu_table(physeq)))
+  abund_table <- as.data.frame(otu_table(physeq))
   #abund_table <- t(otu_table(physeq))
   meta_table <- data.frame(sample_data(physeq))
   #get grouping information
