@@ -70,6 +70,9 @@ perform_anova <- function(df,meta_table,grouping_column,pValueCutoff){
     }
   }
   if(!is.null(df_pw)){
+    if(is.null(dim(df_pw)[1])){
+      df_pw<-rbind(df_pw)
+    }
     df_pw<-data.frame(row.names=NULL,df_pw)
     names(df_pw)<-c("measure","from","to","y","p")
   }
