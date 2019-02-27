@@ -40,7 +40,7 @@ plot_anova_diversity <- function(physeq, method, grouping_column,pValueCutoff=0.
 
   #=add grouping information to alpha diversity measures
   df<-data.frame(div.df,(meta_table[,grouping_column])[as.character(div.df$sample),])
-
+  df[,grouping_column]<-as.factor(df[,grouping_column])
   #perform anova of diversity measure between groups
   anova_res <- perform_anova(df,meta_table,grouping_column,pValueCutoff)
   df_pw <- anova_res$df_pw #get pairwise p-values
