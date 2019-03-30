@@ -26,7 +26,7 @@
 #' @export plot_anova_diversity
 #'
 
-plot_anova_diversity <- function(physeq, method, grouping_column,pValueCutoff=0.05)
+plot_anova_diversity <- function(physeq, method, grouping_column,color=NULL,pValueCutoff=0.05,fontsize.x=10,fontsize.y=10,fill=NULL)
 {
   #enforce orientation
   if(taxa_are_rows(physeq)){
@@ -44,12 +44,19 @@ plot_anova_diversity <- function(physeq, method, grouping_column,pValueCutoff=0.
   #perform anova of diversity measure between groups
   anova_res <- perform_anova(df,meta_table,grouping_column,pValueCutoff)
   df_pw <- anova_res$df_pw #get pairwise p-values
-
+  if(is.null(color)){
+    color=grouping_column
+   }
   #Draw the boxplots
-  p<-ggplot(aes_string(x=grouping_column,y="value",color=grouping_column),data=df)
-  p<-p+geom_boxplot()+geom_jitter(position = position_jitter(height = 0, width=0))
+  p<-ggplot(aes_string(x=grouping_column,y="value",color=color),data=df)
+  if(!is.null(fill)){
+    p<-p+geom_boxplot(aes_string(fill=fill))+geom_jitter(position = position_jitter(height = 0, width=0))
+    }else{
+    p<-p+geom_boxplot()+geom_jitter(position = position_jitter(height = 0, width=0))
+    }
   p<-p+theme_bw()
-  p<-p+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  p<-p+theme(axis.text.x = element_text(angle = 90, hjust = 1,size=fontsize.x))
+  p<-p+theme(axis.text.y = element_text(size=fontsize.y))
   p<-p+facet_wrap(~measure,scales="free_y",nrow=1)+ylab("Observed Values")+xlab("Samples")
   p<-p+theme(strip.background = element_rect(fill = "white"))+xlab("Groups")
 
