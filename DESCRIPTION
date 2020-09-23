@@ -18,6 +18,8 @@ Imports: igraph (>= 1.1.2),
 		 reshape2 (>= 1.4.2),
 		 gtable (>= 0.2.0),
 		 ggplot2 (>= 2.2.1),
+		 impute,
+		 adespatial,
 		 gridExtra (>= 2.2.1)
 Suggests: R.rsp
 VignetteBuilder: R.rsp
